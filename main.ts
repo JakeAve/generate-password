@@ -34,8 +34,26 @@ export function genChars(length: number, requirements: Requirement[]) {
   let minLength = 0;
   let result = "";
   for (let i = 0; i < filledReqs.length; i++) {
-    console.log({ i, len: filledReqs.length });
     const { max, min, charSet } = filledReqs[i];
+
+    if (min < 0) {
+      throw new RangeError(
+        `min for [${i}] (${charSet}) must be greater than 0, but received ${min}`
+      );
+    }
+
+    if (max && max < 0) {
+      throw new RangeError(
+        `max for [${i}] (${charSet}) must be greater than 0, but received ${max}`
+      );
+    }
+
+    if (max && min > max) {
+      throw new RangeError(
+        `min (${min}) is greater than max (${max}) for [${i}] (${charSet})`
+      );
+    }
+
     filledReqs[i].used = 0;
 
     maxLength = max ? maxLength + max : 255;
@@ -44,19 +62,18 @@ export function genChars(length: number, requirements: Requirement[]) {
     for (let j = 0; j < min; j++) {
       result += getRandom(charSet);
       filledReqs[i].used++;
-      console.log("omw", filledReqs[i], result);
     }
   }
 
   if (maxLength < length) {
-    throw new Error(
-      `charLength is ${length}, but requirements only allow a max charLength of ${maxLength}`
+    throw new RangeError(
+      `Argument length is ${length}, but requirements only allow a max length of ${maxLength}`
     );
   }
 
   if (minLength > length) {
-    throw new Error(
-      `charLength is ${length}, but requirements prescribe a minimum of ${minLength}`
+    throw new RangeError(
+      `Argument length is ${length}, but requirements prescribe a min length of ${minLength}`
     );
   }
 
@@ -64,11 +81,9 @@ export function genChars(length: number, requirements: Requirement[]) {
     const idx = getRandom(filledReqs.length);
     const { max, used, charSet } = filledReqs[idx];
     if (max && max >= used) {
-      console.log(max, used);
       filledReqs.splice(idx, 1);
       continue;
     }
-    console.log({ result });
     filledReqs[idx].used++;
     result += getRandom(charSet);
   }
