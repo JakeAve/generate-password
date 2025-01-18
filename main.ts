@@ -32,7 +32,7 @@ export function genChars(length: number, requirements: Requirement[]) {
 
   let maxLength = 0;
   let minLength = 0;
-  let result = "";
+  const result: string[] = [];
   for (let i = 0; i < filledReqs.length; i++) {
     const { max, min, charSet } = filledReqs[i];
 
@@ -60,7 +60,7 @@ export function genChars(length: number, requirements: Requirement[]) {
     minLength += min;
 
     for (let j = 0; j < min; j++) {
-      result += getRandom(charSet);
+      result.push(getRandom(charSet));
       filledReqs[i].used++;
     }
   }
@@ -85,16 +85,16 @@ export function genChars(length: number, requirements: Requirement[]) {
       continue;
     }
     filledReqs[idx].used++;
-    result += getRandom(charSet);
+    result.push(getRandom(charSet));
   }
 
-  const pswd = result.split("").sort(() => {
+  result.sort(() => {
     const [val] = crypto.getRandomValues(new Uint8Array(1));
     if (val > 127) return 1;
     else return -1;
   });
 
-  return pswd.join("");
+  return result.join("");
 }
 
 // Learn more at https://docs.deno.com/runtime/manual/examples/module_metadata#concepts
