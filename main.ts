@@ -88,16 +88,39 @@ export function genChars(length: number, requirements: Requirement[]) {
     result.push(getRandom(charSet));
   }
 
-  result.sort(() => {
-    const [val] = crypto.getRandomValues(new Uint8Array(1));
-    if (val > 127) return 1;
-    else return -1;
-  });
+  // Fisher-Yates
+  let currentIndex = result.length;
+
+  while (currentIndex != 0) {
+    const [randomVal] = crypto.getRandomValues(new Uint32Array(1));
+
+    const randomIndex = Math.floor(
+      (randomVal / (0xffffffff + 1)) * currentIndex
+    );
+    currentIndex--;
+
+    [result[currentIndex], result[randomIndex]] = [
+      result[randomIndex],
+      result[currentIndex],
+    ];
+  }
 
   return result.join("");
 }
 
-// Learn more at https://docs.deno.com/runtime/manual/examples/module_metadata#concepts
 // if (import.meta.main) {
-//   console.log("Add 2 + 3 =", add(2, 3));
+//   for (let i = 0; i < 5; i++) {
+//     const lowercase = "abcdefghijklmnopqrstuvwxyz";
+//     const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//     const symbols = "!@#$%^&*";
+//     const numbers = "0123456789";
+//     const password = genChars(8, [
+//       { charSet: lowercase, min: 1 },
+//       { charSet: uppercase, min: 1 },
+//       { charSet: symbols, min: 1 },
+//       { charSet: numbers, min: 1 },
+//     ]);
+
+//     console.log(`%c${password}`, "font-weight: bold; color: limegreen;");
+//   }
 // }
