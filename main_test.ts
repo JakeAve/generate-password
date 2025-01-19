@@ -1,5 +1,5 @@
 import { assert, assertEquals, assertThrows } from "@std/assert";
-import { getRandom, genChars } from "./main.ts";
+import { genChars, getRandom } from "./main.ts";
 
 Deno.test("getRandom() will return all integers", () => {
   const expected = new Set([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
@@ -135,7 +135,7 @@ Deno.test("genChars will throw error for too low maxes", () => {
         { charSet: numbers, min: 1, max: 1 },
       ]),
     RangeError,
-    "Argument length is 5, but requirements only allow a max length of 4"
+    "Argument length is 5, but requirements only allow a max length of 4",
   );
 });
 
@@ -154,7 +154,7 @@ Deno.test("genChars will throw error for too high mins", () => {
         { charSet: numbers, min: 5 },
       ]),
     RangeError,
-    "Argument length is 5, but requirements prescribe a min length of 20"
+    "Argument length is 5, but requirements prescribe a min length of 20",
   );
 });
 
@@ -173,7 +173,7 @@ Deno.test("genChars will throw error for a min < 0", () => {
         { charSet: numbers, min: 1 },
       ]),
     RangeError,
-    "min for [2] (!@#$%^&*) must be greater than 0, but received -1"
+    "min for [2] (!@#$%^&*) must be greater than 0, but received -1",
   );
 });
 
@@ -192,7 +192,7 @@ Deno.test("genChars will throw error for a max < 0", () => {
         { charSet: numbers, min: 1, max: -2 },
       ]),
     RangeError,
-    "max for [3] (0123456789) must be greater than 0, but received -2"
+    "max for [3] (0123456789) must be greater than 0, but received -2",
   );
 });
 
@@ -211,6 +211,6 @@ Deno.test("genChars will throw error when min > max", () => {
         { charSet: numbers, min: 1, max: 3 },
       ]),
     RangeError,
-    "min (3) is greater than max (1) for [1] (ABCDEFGHIJKLMNOPQRSTUVWXYZ)"
+    "min (3) is greater than max (1) for [1] (ABCDEFGHIJKLMNOPQRSTUVWXYZ)",
   );
 });

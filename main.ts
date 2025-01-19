@@ -1,5 +1,5 @@
 export function getRandom<T extends number | string>(
-  input: T
+  input: T,
 ): T extends number ? number : string {
   let output: undefined | number | string;
   const [randomVal] = crypto.getRandomValues(new Uint32Array(1));
@@ -11,7 +11,7 @@ export function getRandom<T extends number | string>(
   return output as T extends number ? number : string;
 }
 
-interface Requirement {
+export interface Requirement {
   charSet: string;
   min: number;
   max?: number;
@@ -32,19 +32,19 @@ export function genChars(length: number, requirements: Requirement[]) {
 
     if (min < 0) {
       throw new RangeError(
-        `min for [${i}] (${charSet}) must be greater than 0, but received ${min}`
+        `min for [${i}] (${charSet}) must be greater than 0, but received ${min}`,
       );
     }
 
     if (max && max < 0) {
       throw new RangeError(
-        `max for [${i}] (${charSet}) must be greater than 0, but received ${max}`
+        `max for [${i}] (${charSet}) must be greater than 0, but received ${max}`,
       );
     }
 
     if (max && min > max) {
       throw new RangeError(
-        `min (${min}) is greater than max (${max}) for [${i}] (${charSet})`
+        `min (${min}) is greater than max (${max}) for [${i}] (${charSet})`,
       );
     }
 
@@ -61,13 +61,13 @@ export function genChars(length: number, requirements: Requirement[]) {
 
   if (maxLength < length) {
     throw new RangeError(
-      `Argument length is ${length}, but requirements only allow a max length of ${maxLength}`
+      `Argument length is ${length}, but requirements only allow a max length of ${maxLength}`,
     );
   }
 
   if (minLength > length) {
     throw new RangeError(
-      `Argument length is ${length}, but requirements prescribe a min length of ${minLength}`
+      `Argument length is ${length}, but requirements prescribe a min length of ${minLength}`,
     );
   }
 
@@ -89,7 +89,7 @@ export function genChars(length: number, requirements: Requirement[]) {
     const [randomVal] = crypto.getRandomValues(new Uint32Array(1));
 
     const randomIndex = Math.floor(
-      (randomVal / (0xffffffff + 1)) * currentIndex
+      (randomVal / (0xffffffff + 1)) * currentIndex,
     );
     currentIndex--;
 
