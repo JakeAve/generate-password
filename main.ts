@@ -1,6 +1,5 @@
 export function getRandom<T extends number | string>(
-  input: T,
-  options: { exclusions?: (string | number | undefined)[] } = {}
+  input: T
 ): T extends number ? number : string {
   let output: undefined | number | string;
   const [randomVal] = crypto.getRandomValues(new Uint32Array(1));
@@ -9,12 +8,7 @@ export function getRandom<T extends number | string>(
   } else {
     output = input[Math.floor((randomVal / (0xffffffff + 1)) * input.length)];
   }
-
-  if (options.exclusions && options.exclusions.indexOf(output) !== -1) {
-    return getRandom(input, options);
-  } else {
-    return output as T extends number ? number : string;
-  }
+  return output as T extends number ? number : string;
 }
 
 interface Requirement {
@@ -110,15 +104,11 @@ export function genChars(length: number, requirements: Requirement[]) {
 
 // if (import.meta.main) {
 //   for (let i = 0; i < 5; i++) {
-//     const lowercase = "abcdefghijklmnopqrstuvwxyz";
-//     const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-//     const symbols = "!@#$%^&*";
-//     const numbers = "0123456789";
-//     const password = genChars(8, [
-//       { charSet: lowercase, min: 1 },
-//       { charSet: uppercase, min: 1 },
-//       { charSet: symbols, min: 1 },
-//       { charSet: numbers, min: 1 },
+//     const password = genChars(12, [
+//       { charSet: "abcdefghijklmnopqrstuvwxyz", min: 1 },
+//       { charSet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", min: 1 },
+//       { charSet: "!@#$%^&*", min: 1 },
+//       { charSet: "0123456789", min: 1 },
 //     ]);
 
 //     console.log(`%c${password}`, "font-weight: bold; color: limegreen;");

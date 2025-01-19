@@ -12,17 +12,6 @@ Deno.test("getRandom() will return all integers", () => {
   assertEquals(actual, expected);
 });
 
-Deno.test("getRandom() will exclude integers", () => {
-  const expected = new Set([2, 3, 4, 5, 6, 7, 8]);
-
-  const actual = new Set();
-
-  for (let i = 0; i < 1000; i++) {
-    actual.add(getRandom(10, { exclusions: [1, 9, 0] }));
-  }
-  assertEquals(actual, expected);
-});
-
 Deno.test("getRandom() will return all chars", () => {
   const expected = new Set("hello".split(""));
 
@@ -30,17 +19,6 @@ Deno.test("getRandom() will return all chars", () => {
 
   for (let i = 0; i < 1000; i++) {
     actual.add(getRandom("hello"));
-  }
-  assertEquals(actual, expected);
-});
-
-Deno.test("getRandom() will exclude chars", () => {
-  const expected = new Set(["e", "l"]);
-
-  const actual = new Set();
-
-  for (let i = 0; i < 1000; i++) {
-    actual.add(getRandom("hello", { exclusions: ["h", "o"] }));
   }
   assertEquals(actual, expected);
 });
