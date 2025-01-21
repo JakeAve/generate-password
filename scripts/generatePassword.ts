@@ -143,5 +143,5 @@ if (!reqs.length) {
 for (let i = 0; i < 5; i++) {
   const password = genChars(length, reqs);
 
-  console.log(`%c${password}`, "font-weight: bold; color: limegreen;");
+  console.log(`%c${password}`, "font-weight: bold; color: green;");
 }
