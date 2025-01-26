@@ -2,7 +2,7 @@
 
 ## Description
 
-Synthima is a tiny Typescript library and cli to create random strings suitable
+Synthima is a tiny Typescript library and CLI to create random strings suitable
 to be used as strong passwords. Synthima wholly relies on
 `crypto.getRandomValues` rather than `Math.random` to derive values. It is
 completely customizable.
@@ -91,9 +91,9 @@ level3(); // 'Ƭl^bÉưR19Ȯ1ɪĸBëƱ`
 
 ## CLI
 
-You will need to clone the repo to access the cli.
+You will need to clone the repo to access the CLI.
 
-The cli can be accessed with `deno run scripts/synthima.ts`. It can also be
+The CLI can be accessed with `deno run scripts/synthima.ts`. It can also be
 exported as a raw executable with `deno compile scripts/synthima.ts`.
 
 ### Add as Alias
@@ -119,7 +119,7 @@ synthima
 
 ### Add Deno compile executable as alias
 
-To "install" it as a cli program, you could do the following:
+To "install" it as a CLI program, you could do the following:
 
 ```bash
 deno compile scripts/synthima.ts
