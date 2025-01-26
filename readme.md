@@ -91,6 +91,8 @@ level3(); // 'Ƭl^bÉưR19Ȯ1ɪĸBëƱ`
 
 ## CLI
 
+You will need to clone the repo to access the cli.
+
 The cli can be accessed with `deno run scripts/synthima.ts`. It can also be
 exported as a raw executable with `deno compile scripts/synthima.ts`.
 

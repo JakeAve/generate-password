@@ -5,7 +5,7 @@ import {
   level2CharSet,
   level3CharSet,
   numbersCharSet,
-  Requirement,
+  type Requirement,
 } from "../main.ts";
 import { parseArgs } from "@std/cli";
 
