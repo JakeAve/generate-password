@@ -1,8 +1,9 @@
 {
   "name": "@jakeave/synthima",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "exports": "./main.ts",
   "license": "MIT",
+  "description": "Generate customizable password strings using crypto.getRandomValues",
   "publish": {
     "exclude": [
       "main_tests.ts",

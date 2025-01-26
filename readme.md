@@ -62,7 +62,7 @@ requirements can be added.
 numbers(); // '65167892`
 ```
 
-### `level1(length, additionalReqs)
+### `level1(length, additionalReqs)`
 
 Calls `genChars` with predefined arguments. Length can be overwritten,
 requirements can be added.
@@ -71,7 +71,7 @@ requirements can be added.
 level1(); // 'cTOzh*5OY1$6`
 ```
 
-### `level2(length, additionalReqs)
+### `level2(length, additionalReqs)`
 
 Calls `genChars` with predefined arguments. Length can be overwritten,
 requirements can be added.
@@ -80,7 +80,7 @@ requirements can be added.
 level2(); // '13sH_O8]vA-r`
 ```
 
-### `level3(length, additionalReqs)
+### `level3(length, additionalReqs)`
 
 Calls `genChars` with predefined arguments. Length can be overwritten,
 requirements can be added.

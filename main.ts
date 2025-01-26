@@ -23,11 +23,17 @@ interface FilledRequirement extends Requirement {
  * @returns A random character string
  * @example
  * genChars(8, [{charSet: 'abcd'}]) // 'bccbadda'
+ * @example
  * genChars(4, [{charSet: '01'}]) // '1101'
+ * @example
  * genChars(2, [{charSet: 'abc'}, {charSet: '123'}]) // '1b'
+ * @example
  * genChars(10, [{charSet: 'abc', max: 2}, {charSet: '123'}]) // '2123a212c3'
+ * @example
  * genChars(10, [{charSet: 'abc', min: 3}, {charSet: '123'}]) // '23b2c13aca'
+ * @example
  * genChars(10, [{ charSet: "abc", min: 2, max: 6 }, { charSet: "123" }]) // 'cbbb2ab312'
+ * @example
  * genChars(8, [{ charSet: "abc", min: 0 }, { charSet: "123", min: 8 }]) // '11333232'
  */
 export function genChars(length: number, requirements: Requirement[]): string {
@@ -114,7 +120,9 @@ export function genChars(length: number, requirements: Requirement[]): string {
  * @returns {number|string} A random number or a single random character
  * @example
  * getRandom(2) // 0 | 1
+ * @example
  * getRandom(3) // 0 | 1 | 2
+ * @example
  * getRandom('abc') // 'a' | 'b' | 'c'
  */
 export function getRandom<T extends number | string>(
