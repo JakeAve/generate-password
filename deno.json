@@ -3,6 +3,12 @@
   "version": "0.0.1",
   "exports": "./main.ts",
   "license": "MIT",
+  "publish": {
+    "exclude": [
+      "main_tests.ts",
+      "scripts/*"
+    ]
+  },
   "tasks": {
     "dev": "deno run --watch main.ts"
   },
