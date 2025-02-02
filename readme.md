@@ -1,5 +1,7 @@
 # Synthima
 
+[![JSR @jakeave/synthima](https://jsr.io/badges/@jakeave)](https://jsr.io/@jakeave/synthima)
+
 ## Description
 
 Synthima is a tiny Typescript library and CLI to create random strings suitable
@@ -68,7 +70,7 @@ Calls `genChars` with predefined arguments. Length can be overwritten,
 requirements can be added.
 
 ```typescript
-level1(); // 'cTOzh*5OY1$6`
+level1(); // 'cTOzh*5OY1$6'
 ```
 
 ### `level2(length, additionalReqs)`
@@ -77,7 +79,7 @@ Calls `genChars` with predefined arguments. Length can be overwritten,
 requirements can be added.
 
 ```typescript
-level2(); // '13sH_O8]vA-r`
+level2(); // '13sH_O8]vA-r'
 ```
 
 ### `level3(length, additionalReqs)`
