@@ -7,7 +7,8 @@
   "publish": {
     "exclude": [
       "main_tests.ts",
-      "scripts/*"
+      "scripts/*",
+      ".github/*"
     ]
   },
   "tasks": {
