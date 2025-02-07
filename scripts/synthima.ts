@@ -17,31 +17,31 @@ if (args.h || args.help) {
   console.log(
     "%cletters | numbers | level1 | level2 | level3",
     "font-weight: bold;",
-    "- Preset options that can be expanded on. If no sets are added default will be level1.",
+    "- Preset options that can be expanded on. If no sets are added default will be level1."
   );
 
   console.log(
     "%c--length -l",
     "font-weight: bold;",
-    "- (Default 12) The length of the resulting string",
+    "- (Default 12) The length of the resulting string"
   );
 
   console.log(
     "%c--set -s.  ",
     "font-weight: bold;",
-    "- Add sets of characters (example: --set abcd)",
+    "- Add sets of characters (example: --set abcd)"
   );
 
   console.log(
     "%c--min -m.  ",
     "font-weight: bold;",
-    "- (Default: 1) The minimum characters chosen from the the corresponding set",
+    "- (Default: 1) The minimum characters chosen from the the corresponding set"
   );
 
   console.log(
     "%c--max -x.  ",
     "font-weight: bold;",
-    "- The maximum characters chosen from the the corresponding set",
+    "- The maximum characters chosen from the the corresponding set"
   );
 
   console.log("");
@@ -49,13 +49,13 @@ if (args.h || args.help) {
   console.log(
     "%cExample 1:",
     "font-weight: bold;",
-    "-s 1234 -s abcd -m 2 -m 4 -l 6 could yield 3dd2ca",
+    "-s 1234 -s abcd -m 2 -m 4 -l 6 could yield 3dd2ca"
   );
 
   console.log(
     "%cExample 2:",
     "font-weight: bold;",
-    "numbers -s 9 will guarantee each result has a 9 (min 1 is default)",
+    "numbers -s 9 will guarantee each result has a 9 (min 1 is default)"
   );
 
   Deno.exit();
@@ -110,7 +110,7 @@ if (!reqs.length) {
 }
 
 for (let i = 0; i < 5; i++) {
-  const password = genChars(length, [...reqs]);
+  const password = genChars(length, reqs);
 
   console.log(`%c${password}`, "font-weight: bold; color: green;");
 }

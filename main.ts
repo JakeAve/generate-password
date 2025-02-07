@@ -37,7 +37,7 @@ interface FilledRequirement extends Requirement {
  * genChars(8, [{ charSet: "abc", min: 0 }, { charSet: "123", min: 8 }]) // '11333232'
  */
 export function genChars(length: number, requirements: Requirement[]): string {
-  const filledReqs = requirements as FilledRequirement[];
+  const filledReqs = [...requirements] as FilledRequirement[];
 
   let maxLength = 0;
   let minLength = 0;

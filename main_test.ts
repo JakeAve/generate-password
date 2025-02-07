@@ -192,7 +192,7 @@ Deno.test("genChars() will throw error for too low maxes", () => {
         { charSet: numbers, min: 1, max: 1 },
       ]),
     RangeError,
-    "Argument length is 5, but requirements only allow a max length of 4",
+    "Argument length is 5, but requirements only allow a max length of 4"
   );
 });
 
@@ -211,7 +211,7 @@ Deno.test("genChars() will throw error for too high mins", () => {
         { charSet: numbers, min: 5 },
       ]),
     RangeError,
-    "Argument length is 5, but requirements prescribe a min length of 20",
+    "Argument length is 5, but requirements prescribe a min length of 20"
   );
 });
 
@@ -230,7 +230,7 @@ Deno.test("genChars() will throw error for a min < 0", () => {
         { charSet: numbers, min: 1 },
       ]),
     RangeError,
-    "min for [2] (!@#$%^&*) must be greater than 0, but received -1",
+    "min for [2] (!@#$%^&*) must be greater than 0, but received -1"
   );
 });
 
@@ -249,7 +249,7 @@ Deno.test("genChars() will throw error for a max < 0", () => {
         { charSet: numbers, min: 1, max: -2 },
       ]),
     RangeError,
-    "max for [3] (0123456789) must be greater than 0, but received -2",
+    "max for [3] (0123456789) must be greater than 0, but received -2"
   );
 });
 
@@ -268,7 +268,7 @@ Deno.test("genChars() will throw error when min > max", () => {
         { charSet: numbers, min: 1, max: 3 },
       ]),
     RangeError,
-    "min (3) is greater than max (1) for [1] (ABCDEFGHIJKLMNOPQRSTUVWXYZ)",
+    "min (3) is greater than max (1) for [1] (ABCDEFGHIJKLMNOPQRSTUVWXYZ)"
   );
 });
 
@@ -306,6 +306,30 @@ Deno.test("genChars() min and max range will vary 2", () => {
   }
 
   assertEquals(expectedNumMatches, actualNumMatches);
+});
+
+Deno.test("genChars() does not edit the argument array", () => {
+  const numbers = "0123456789";
+  const letters = "abcdefghijklmnopqrstuvwxyz";
+
+  const requirements = [
+    { charSet: numbers, min: 2, max: 8 },
+    { charSet: letters, min: 1, max: 1 },
+  ];
+
+  const clone = [...requirements];
+
+  const passes: string[] = [];
+
+  for (let i = 0; i < 100; i++) {
+    passes.push(genChars(8, requirements));
+  }
+
+  assertEquals(requirements, clone);
+
+  for (const pass of passes) {
+    assert(/\d{1}/.test(pass));
+  }
 });
 
 Deno.test("genChars() will randomly shuffle", () => {
